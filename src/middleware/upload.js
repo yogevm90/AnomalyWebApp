@@ -10,11 +10,11 @@ var storage = multer.diskStorage({
     const match = ["text/csv"];
 
     if (match.indexOf(file.mimetype) === -1) {
-      var message = `${file.originalname} is invalid. Only accept csv.`;
+      var message = `${file.originalname} is invalid. Only accepts csv.`;
       return callback(message, null);
     }
 
-    var filename = `${Date.now()}-${file.originalname}`;
+    var filename = `${file.originalname}`;
     callback(null, filename);
   }
 });

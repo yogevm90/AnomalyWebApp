@@ -5,8 +5,8 @@ const restRequest = require("../controllers/rest");
 
 let routes = app => {
   router.get("/", homeController.getHome);
-
   router.post("/", restRequest.handleRequest);
+  router.post("/detect", restRequest.handleRequest)
 
   return app.use("/", router);
 };

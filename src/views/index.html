@@ -1,61 +1,39 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Node.js upload multiple files</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
-    <style>
-      div.preview-images > img {
-        width: 30%;
-      }
-    </style>
-  </head>
-  <body>
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-8 mt-3">
-          <h4>Node.js upload multiple files - bezkoder.com</h4>
-
-          <form action="/multiple-upload" method="POST" enctype="multipart/form-data">
-            <div class="form-group">
-              <label for="example-input-file"> </label>
-              <input type="file" name="multi-files" multiple id="input-multi-files" class="form-control-file border"/>
-            </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
-          </form>
-        </div>
-      </div>
-      <hr />
-      <div class="row">
-        <div class="col-sm-12">
-          <div class="preview-images"></div>
-        </div>
-      </div>
-    </div>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script>
-      $(document).ready(function() {
-        let imagesPreview = function(input, placeToInsertImagePreview) {
-          if (input.files) {
-            let filesAmount = input.files.length;
-            for (i = 0; i < filesAmount; i++) {
-              let reader = new FileReader();
-              reader.onload = function(event) {
-                $($.parseHTML("<img>"))
-                  .attr("src", event.target.result)
-                  .appendTo(placeToInsertImagePreview);
-              };
-              reader.readAsDataURL(input.files[i]);
-            }
-          }
-        };
-        $("#input-multi-files").on("change", function() {
-          imagesPreview(this, "div.preview-images");
-        });
-      });
-    </script>
-  </body>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Anomaly Detection Server</title>
+    </head>
+    <body>
+        <h1>Anomaly Detection Server</h1>
+        <br>
+        <form action="/detect" method="POST" enctype="multipart/form-data" name="files" target="result">
+            <table>
+                <tr>
+                    <td>Algorythm Type:</td>
+                    <td>
+                        <select name="algorythms" id="algo_type">
+                            <option value="regressive">Recursive</option>
+                            <option value="hybrid">Hybrid</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Upload Proper File:</td>
+                    <td>
+                        <input type="file" name="good_file">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Upload File to Detect:</td>
+                    <td>
+                        <input type="file" name="bad_file">
+                    </td>
+                </tr>
+            </table>
+            <br>
+            <input type="submit" value="Upload">
+        </form>
+        <br>
+        <iframe name="result" width="80%" height="500"></iframe> 
+    </body>
 </html>
