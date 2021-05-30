@@ -6,27 +6,27 @@
     <body>
         <h1>Anomaly Detection Server</h1>
         <br>
-        <form action="/detect" method="POST" enctype="multipart/form-data" name="files" target="result">
+        <form action="/detect" method="POST" enctype="multipart/form-data" target="result">
             <table>
                 <tr>
                     <td>Algorythm Type:</td>
                     <td>
-                        <select name="algorythms" id="algo_type">
+                        <select name="algo_type" id="algo_type">
                             <option value="regressive">Recursive</option>
                             <option value="hybrid">Hybrid</option>
                         </select>
                     </td>
                 </tr>
                 <tr>
-                    <td>Upload Proper File:</td>
+                    <td>Upload training.csv File:</td>
                     <td>
-                        <input type="file" name="good_file">
+                        <input type="file" name="files">
                     </td>
                 </tr>
                 <tr>
-                    <td>Upload File to Detect:</td>
+                    <td>Upload check.csv File to Detect:</td>
                     <td>
-                        <input type="file" name="bad_file">
+                        <input type="file" name="files">
                     </td>
                 </tr>
             </table>
